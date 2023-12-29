@@ -5,7 +5,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-image: url("./assets/felt-cloth.jpg");
+  background-size: contain;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,27 +14,76 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.main__container {
+  height: 100dvh;
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+/* header */
+
+.header {
+  padding: 1.5rem 0;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__remaining-cards {
+  text-align: right;
+}
+
+/* betting area */
+
+
+
+/* bank */
+
+.bank__container > *:not(button) {
+  margin: 0;
+  padding: 0;
+}
+
+.bank__container {
+  background-color: #213547;
+  width: fit-content;
+  padding: 1rem 2.5rem;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 3px 3px 10px rgba(37, 37, 37, 0.685);
+}
+
+p.bank__total {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.bank__betting-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.bank__all-in {
+  grid-column: 1/-1;
+}
+
+
+
+
+
 
 button {
   border-radius: 8px;
@@ -45,6 +95,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  box-shadow: 3px 3px 10px black;
 }
 button:hover {
   border-color: #646cff;
