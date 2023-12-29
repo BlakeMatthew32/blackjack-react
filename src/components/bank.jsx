@@ -1,12 +1,12 @@
-import { useState } from "react"
-import bettingAmounts from "./bettingAmounts"
+/* eslint-disable react/prop-types */
+import bettingAmounts from "../bettingAmounts"
 
 
-export default function Bank() {
-    const [ bankAmount, setBankAmount ] = useState(1000)
+export default function Bank({ handleBet, bankAmount, changeBankAmount, resetBet }) {
 
-    function updateBank(value) {
-        setBankAmount(prev => prev - value)
+    function handleButtonClick(value) {
+        handleBet(value)
+        changeBankAmount(value)
     }
 
     const bettingButtons = bettingAmounts.map((amount, index) => {
@@ -14,7 +14,7 @@ export default function Bank() {
             <button 
                 key={index} 
                 disabled={amount > bankAmount}
-                onClick={() => updateBank(amount)}
+                onClick={() => handleButtonClick(amount)}
                 >
                     {amount}
             </button>
@@ -23,12 +23,16 @@ export default function Bank() {
 
     return (
         <div className="bank__container">
-            <p className="bank__total">Bank: ${bankAmount}</p>
+            <div className="bank__info-container">
+                <p className="bank__total">Bank: ${bankAmount}</p>
+                <button onClick={resetBet}>Reset Bet</button>
+            </div>
+            
             
             <div className="bank__betting-buttons">
                 <button 
                     disabled={bankAmount <= 0} 
-                    onClick={() => updateBank(bankAmount)}
+                    onClick={() => handleButtonClick(bankAmount)}
                     className="bank__all-in"
                     >
                         All in
