@@ -1,14 +1,19 @@
 
 import Header from "./components/header"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Playing from "./pages/playing/playing"
 import Betting from "./pages/betting/betting"
+import getDeck from "./apiFunctions/getDeck"
 
 function App() {
 
   const [ playersBet, setPlayersBet ] = useState(0)
   const [ bankAmount, setBankAmount ] = useState(1000)
   const [ playing, setPlaying ] = useState(false)
+
+  useEffect(() => {
+    console.log("Logic for setting the deck data to deck")
+  }, [])
 
   function handleBet(betAmount) {
     setPlayersBet(prev => prev + betAmount)
