@@ -37,9 +37,23 @@ body {
   padding: 1.5rem 0;
 }
 
-.header__nav {
+.header__nav-container {
   display: flex;
   justify-content: space-between;
+}
+
+.header__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 1px black;
+  color: darkgoldenrod;
+  letter-spacing: 1px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .header__remaining-cards {
