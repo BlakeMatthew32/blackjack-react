@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import CardCount from "./cardCount"
 
-export default function Header() {
+export default function Header({ cardsRemaining }) {
     return (
         <div className="header">
             <div className="header__nav-container">
@@ -10,7 +11,7 @@ export default function Header() {
                     <button>Menu</button>
                 </nav>
             </div>
-            <CardCount/>
+            <CardCount cardsRemaining={cardsRemaining} />
         </div>
     )
 }

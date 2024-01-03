@@ -11,9 +11,12 @@ function App() {
   const [ bankAmount, setBankAmount ] = useState(1000)
   const [ playing, setPlaying ] = useState(false)
 
+  const [ deck, setDeck ] = useState(null)
+
   useEffect(() => {
-    console.log("Logic for setting the deck data to deck")
+    getDeck(setDeck)
   }, [])
+
 
   function handleBet(betAmount) {
     setPlayersBet(prev => prev + betAmount)
@@ -34,7 +37,7 @@ function App() {
 
   return (
     <div className="main__container">
-      <Header/>
+      <Header cardsRemaining={!deck ? 0 : deck.remaining} />
       {playing ? <Playing /> : <Betting 
         currentBet={playersBet} 
         handleDeal={handleDeal} 
