@@ -3,7 +3,11 @@ import Header from "./components/header"
 import { useEffect, useState } from "react"
 import Playing from "./pages/playing/playing"
 import Betting from "./pages/betting/betting"
-import getDeck from "./apiFunctions/getDeck"
+
+// custom hooks
+import useFetch from "./hooks/useFetch"
+
+const DECK_API_URL = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2"
 
 function App() {
 
@@ -11,11 +15,8 @@ function App() {
   const [ bankAmount, setBankAmount ] = useState(1000)
   const [ playing, setPlaying ] = useState(false)
 
-  const [ deck, setDeck ] = useState(null)
+  const { loading, error, value: deck } = useFetch(DECK_API_URL)
 
-  useEffect(() => {
-    getDeck(setDeck)
-  }, [])
 
   function handleBet(betAmount) {
     setPlayersBet(prev => prev + betAmount)

@@ -7,7 +7,7 @@ export default function Playing() {
                 <p>Dealers cards</p>
             </div>
             <div className="playing__player-container">
-                <p>Players ccards</p>
+                <p>Players cards</p>
             </div>
         </div>
     )
