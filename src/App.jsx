@@ -17,7 +17,6 @@ function App() {
     getDeck(setDeck)
   }, [])
 
-
   function handleBet(betAmount) {
     setPlayersBet(prev => prev + betAmount)
   }

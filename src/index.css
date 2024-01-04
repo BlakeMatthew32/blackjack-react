@@ -45,9 +45,10 @@ body {
 .header__logo {
   font-size: 2rem;
   font-weight: 700;
-  text-shadow: 1px 1px 1px black;
-  color: darkgoldenrod;
+  text-shadow: 2px 2px 2px black;
+  color: rgb(216, 216, 5);
   letter-spacing: 1px;
+  margin: 0.125rem;
 }
 
 .header__nav {
@@ -58,11 +59,43 @@ body {
 
 .header__remaining-cards {
   text-align: right;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 2px black;
 }
 
 /* betting area */
 
+.bet__container {
+  margin-block-start: -100px;
+  text-align: center;
+}
 
+.bet__heading {
+  font-size: 3rem;
+  text-shadow: 2px 2px 2px black;
+  margin-block: 0;
+}
+
+.bet__player-bet {
+  margin-block: 0.5rem 1rem;
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px black;
+}
+
+.bet__container .bet__deal-button {
+  background-color: rgb(216, 216, 5);
+  color: black;
+  font-size: 1.625rem;
+  font-weight: 700;
+  padding: 0.25rem 2rem;
+}
+
+.bet__deal-button:disabled {
+  background-color: #1a1a1a;
+  color: lightslategray;
+}
 
 /* bank */
 
