@@ -1,13 +1,11 @@
 
 import Header from "./components/header"
-import { useEffect, useState } from "react"
+import { useState, useRef } from "react"
 import Playing from "./pages/playing/playing"
 import Betting from "./pages/betting/betting"
 
 // custom hooks
-import useFetch from "./hooks/useFetch"
-
-const DECK_API_URL = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=2"
+import useDeck from "./hooks/useDeck"
 
 function App() {
 
@@ -15,8 +13,17 @@ function App() {
   const [ bankAmount, setBankAmount ] = useState(1000)
   const [ playing, setPlaying ] = useState(false)
 
-  const { loading, error, value: deck } = useFetch(DECK_API_URL)
+  const deckIdRef = useRef("")
+  const cardsRemainingRef = useRef(0)
 
+  const { value: deck } = useDeck(deckIdRef.current, {}, [playersBet])
+
+  if (deck) {
+    deckIdRef.current = deck.deck_id
+    cardsRemainingRef.current = deck.remaining
+  }
+
+  console.log(deck)
 
   function handleBet(betAmount) {
     setPlayersBet(prev => prev + betAmount)
@@ -37,7 +44,7 @@ function App() {
 
   return (
     <div className="main__container">
-      <Header cardsRemaining={!deck ? 0 : deck.remaining} />
+      <Header cardsRemaining={cardsRemainingRef.current} />
       {playing ? <Playing /> : <Betting 
         currentBet={playersBet} 
         handleDeal={handleDeal} 
