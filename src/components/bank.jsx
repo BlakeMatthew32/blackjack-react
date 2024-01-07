@@ -1,44 +1,32 @@
-/* eslint-disable react/prop-types */
+
 import bettingAmounts from "../bettingAmounts"
 
+const Bank = () => {
 
-export default function Bank({ handleBet, bankAmount, changeBankAmount, resetBet }) {
+    const bankButtons = bettingAmounts.map((elm, index) => {
 
-    function handleButtonClick(value) {
-        handleBet(value)
-        changeBankAmount(value)
-    }
+        const handleClick = (amount) => {
+            console.log(amount)
+        }
 
-    const bettingButtons = bettingAmounts.map((amount, index) => {
-        return (
-            <button 
-                key={index} 
-                disabled={amount > bankAmount}
-                onClick={() => handleButtonClick(amount)}
-                >
-                    {amount}
+        return <button 
+            className={`benk__button-${elm} bank__button`}
+            onClick={() => handleClick(elm.value)} 
+            style={{"borderColor": elm.color}}
+            key={index}
+            >
+                {elm.value}
             </button>
-        )
     })
 
     return (
-        <div className="bank__container">
-            <div className="bank__info-container">
-                <p className="bank__total">Bank: ${bankAmount}</p>
-                <button onClick={resetBet}>Reset Bet</button>
-            </div>
-            
-            
-            <div className="bank__betting-buttons">
-                <button 
-                    disabled={bankAmount <= 0} 
-                    onClick={() => handleButtonClick(bankAmount)}
-                    className="bank__all-in"
-                    >
-                        All in
-                </button>
-                {bettingButtons}
+        <div className="bank">
+            <p className="bank__total">Bank: $1000</p>
+            <div className="bank__button-container">
+                {...bankButtons}
             </div>
         </div>
     )
 }
+
+export default Bank

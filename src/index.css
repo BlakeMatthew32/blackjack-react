@@ -6,7 +6,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-image: url("./assets/felt-cloth.jpg");
-  background-size: contain;
+  background-size: cover;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,28 +16,22 @@
 
 * {
   box-sizing: border-box;
-}
-
-body {
   margin: 0;
+  padding: 0;
 }
 
-.main__container {
+.app__container {
   height: 100dvh;
   max-width: 80%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 /* header */
 
 .header {
   padding: 1.5rem 0;
-}
-
-.header__nav-container {
   display: flex;
   justify-content: space-between;
 }
@@ -57,86 +51,61 @@ body {
   align-items: center;
 }
 
-.header__remaining-cards {
+.main__cards-remaining {
   text-align: right;
   font-size: 1.125rem;
   font-weight: 800;
   letter-spacing: 1px;
   text-shadow: 2px 2px 2px black;
+  color: yellow;
 }
 
-/* betting area */
+/* play area */
 
-.bet__container {
-  margin-block-start: -100px;
-  text-align: center;
-}
-
-.bet__heading {
-  font-size: 3rem;
-  text-shadow: 2px 2px 2px black;
-  margin-block: 0;
-}
-
-.bet__player-bet {
-  margin-block: 0.5rem 1rem;
-  font-size: 2rem;
-  text-shadow: 2px 2px 2px black;
-}
-
-.bet__container .bet__deal-button {
-  background-color: rgb(216, 216, 5);
-  color: black;
-  font-size: 1.625rem;
-  font-weight: 700;
-  padding: 0.25rem 2rem;
-}
-
-.bet__deal-button:disabled {
-  background-color: #1a1a1a;
-  color: lightslategray;
+.main {
+  flex: 1;
+  position: relative;
 }
 
 /* bank */
 
-.bank__container > *:not(button) {
-  margin: 0;
-  padding: 0;
+.bank {
+  padding: 1.25rem;
+  background-color: darkcyan;
+  border-radius: 10px 10px 0 0;
+  width: 500px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.65);
 }
 
-.bank__container {
-  background-color: #213547;
-  width: fit-content;
-  padding: 1rem 2.5rem 2rem;
-  border-radius: 1rem 1rem 0 0;
-  box-shadow: 3px 3px 10px rgba(37, 37, 37, 0.685);
+.bank__total {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.bank__info-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-p.bank__total {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-.bank__betting-buttons {
+.bank__button-container {
+  margin-top: 1.75rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  place-items: center;
+  gap: 1.25rem;
 }
 
-.bank__all-in {
-  grid-column: 1/-1;
+.bank__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 10px red;
+  border-style: dashed;
+  text-align: center;
 }
 
-
-
-
-
+/* general */
 
 button {
   border-radius: 8px;

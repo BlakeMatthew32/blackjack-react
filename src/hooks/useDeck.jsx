@@ -9,7 +9,7 @@ export default function useDeck(deckId = "", options = {}, dependencies = []) {
     const fetchRef = {...useFetch(DECK_API_URL, options, dependencies)}
 
     if(!firstsRenderRef.current) {
-        DECK_API_URL = `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=104`
+        DECK_API_URL = `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
     } else {
         firstsRenderRef.current = false
     }
