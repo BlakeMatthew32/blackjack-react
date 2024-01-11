@@ -1,18 +1,24 @@
+/* eslint-disable react/prop-types */
 
+import { useState } from "react"
 import bettingAmounts from "../bettingAmounts"
 
-const Bank = () => {
+const Bank = ({ handleBet }) => {
 
-    const handleClick = (amount) => {
-        console.log(amount)
+    const [bankTotal, setBankTotal] = useState(1000)
+
+    const updateBank = (value) => {
+        setBankTotal(prev => prev -= value)
+        handleBet(value)
     }
 
     const bankButtons = bettingAmounts.map((elm, index) => {
 
         return <button 
             className={`benk__button-${elm} bank__button`}
-            onClick={() => handleClick(elm.value)} 
-            style={{"borderColor": elm.color}}
+            onClick={() => updateBank(elm.value)} 
+            disabled={bankTotal < elm.value}
+            style={{"borderColor": elm.color, "outline": `2px solid ${elm.color}`}}
             key={index}
             >
                 {elm.value}
@@ -21,7 +27,7 @@ const Bank = () => {
 
     return (
         <div className="bank">
-            <p className="bank__total">Bank: $1000</p>
+            <p className="bank__total">Bank: ${bankTotal}</p>
             <div className="bank__button-container">
                 {bankButtons}
             </div>

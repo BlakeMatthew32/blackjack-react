@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from "react"
 
-export default function useAsnyc(callback, dependencies = []) {
+const useAsnyc = (callback, dependencies = []) => {
     const [ loading, setLoading ] = useState(true)
     const [ error, setError ] = useState()
     const [ value, setValue ] = useState()
@@ -21,3 +21,5 @@ export default function useAsnyc(callback, dependencies = []) {
 
     return { loading, error, value }
 }
+
+export default useAsnyc

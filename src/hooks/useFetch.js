@@ -4,7 +4,7 @@ const DEFAULT_OPTIONS = {
     headers: { "Content-Type": "application/json" }
 }
 
-export default function useFetch(url, options = {}, dependencies = [] ) {
+const useFetch = (url, options = {}, dependencies = [] ) => {
     return useAsnyc(() => {
         return fetch(url, {...DEFAULT_OPTIONS, ...options})
             .then(res => {
@@ -13,3 +13,5 @@ export default function useFetch(url, options = {}, dependencies = [] ) {
             })
     }, dependencies)
 }
+
+export default useFetch

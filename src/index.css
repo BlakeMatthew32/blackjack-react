@@ -51,7 +51,7 @@
   align-items: center;
 }
 
-.main__cards-remaining {
+.main__info {
   text-align: right;
   font-size: 1.125rem;
   font-weight: 800;
@@ -60,11 +60,52 @@
   color: yellow;
 }
 
+.main__info:last-of-type {
+  margin-top: 1.125rem;
+}
+
 /* play area */
 
 .main {
   flex: 1;
   position: relative;
+}
+
+/* betting component */
+
+.betting__container {
+  display: block;
+  margin: 1rem auto;
+  width: 50%;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.betting__container > h1,
+.betting__container > p {
+  text-shadow: 0px 0px 10px black;
+}
+
+.betting__container .betting__bet {
+  margin: 2rem;
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+.betting__container .betting__deal-button {
+  font-size: 1.25rem;
+  width: 150px;
+  font-weight: 800;
+  letter-spacing: 1.25px;
+  background-color: rgb(216, 216, 5);
+  color: #1a1a1a;
+}
+
+.betting__container .betting__deal-button:disabled {
+  background-color: #1a1a1a;
+  color: gray;
+  opacity: 0.9;
 }
 
 /* bank */
@@ -100,9 +141,13 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 10px red;
+  border-width: 10px;
   border-style: dashed;
   text-align: center;
+}
+
+.bank__button:disabled {
+  opacity: 0.75;
 }
 
 /* general */
