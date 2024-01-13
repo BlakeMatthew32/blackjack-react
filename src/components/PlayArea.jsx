@@ -2,6 +2,7 @@
 import { useState } from "react"
 
 import Betting from "../pages/betting"
+import Playing from "../pages/playing/playing"
 import Bank from "./bank"
 
 // hooks
@@ -9,9 +10,12 @@ import useDeck from "../hooks/useDeck"
 
 const PlayArea = () => {
 
-    // encapsulate betting logic in a custom hook once game is working
+    // encapsulate betting logicq in a custom hook once game is working
     const [ bet, setBet ] = useState(0)
     const [ activeBet, setActiveBet ] = useState(0)
+    const [ gameActive, setGameActive ] = useState(false)
+    
+    const { playerCards, dealerCards, cardsRemaining, deal } = useDeck()
 
     const handleBet = (value) => {
         setBet (prev => prev += value)
@@ -20,16 +24,22 @@ const PlayArea = () => {
     const handleDeal = (betAmount) => {
         setActiveBet(betAmount)
         setBet(0)
+        deal()
+        setGameActive(true)
     }
-
-    
-    const {value: deck} = useDeck()
 
     return (
         <main className="main">
-            <p className="main__info">Cards Remaining: {deck ? deck.remaining : 0}</p>
+            <p className="main__info">Cards Remaining: {cardsRemaining}</p>
             <p className="main__info">Placed Bet: ${activeBet}</p>
-            <Betting betAmount={bet}  handleDeal={handleDeal} />
+            {gameActive? 
+                <Playing
+                    playerCards={playerCards} 
+                    dealerCards={dealerCards} /> :
+                <Betting 
+                    betAmount={bet}  
+                    handleDeal={handleDeal} />
+            }
             <Bank handleBet={handleBet} />
         </main>
     )

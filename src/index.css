@@ -150,6 +150,26 @@
   opacity: 0.75;
 }
 
+/* playing  */
+
+.playing_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playing_game-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.playing_card {
+  width: 125px;
+}
+
 /* general */
 
 button {
