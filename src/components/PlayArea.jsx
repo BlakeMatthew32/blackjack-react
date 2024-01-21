@@ -15,7 +15,7 @@ const PlayArea = () => {
     const [ activeBet, setActiveBet ] = useState(0)
     const [ gameActive, setGameActive ] = useState(false)
     
-    const { playerCards, dealerCards, cardsRemaining, deal } = useDeck()
+    const { playerCards, dealerCards, cardsRemaining, deckIdRef, deal } = useDeck()
 
     const handleBet = (value) => {
         setBet (prev => prev += value)
@@ -35,7 +35,8 @@ const PlayArea = () => {
             {gameActive? 
                 <Playing
                     playerCards={playerCards} 
-                    dealerCards={dealerCards} /> :
+                    dealerCards={dealerCards}
+                    deckId={deckIdRef.current} /> :
                 <Betting 
                     betAmount={bet}  
                     handleDeal={handleDeal} />

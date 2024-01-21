@@ -28,13 +28,12 @@ const useDeck = ( options = {}, dependencies = [] ) => {
         if(!initRender.current) {
             deckIdRef.current = value?.deck_id
             setCardsRemaining(value?.remaining)
-            console.log(value)
         } else {
             initRender.current = false
         }
     }, [value])
 
-    return { dealerCards, playerCards, cardsRemaining, deal }
+    return { dealerCards, playerCards, cardsRemaining, deckIdRef, deal }
 }
 
 export default useDeck
